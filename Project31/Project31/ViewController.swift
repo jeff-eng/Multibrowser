@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var addressBar: UITextField!
     
@@ -16,7 +16,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        setDefaultTitle()
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addWebView))
+        let delete = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteWebView))
+        navigationItem.rightBarButtonItems = [add, delete]
+        
+    }
+    
+    func setDefaultTitle() {
+        title = "Multibrowser"
+    }
+    
+    // Adds a new UIWebView to our UIStackView
+    func addWebView() {
+        let webView = UIWebView()
+        webView.delegate = self
+        
+        stackView.addArrangedSubview(webView)
+        
+        let url = NSURL(string: "https://www.hackingwithswift.com")!
+        
+        webView.loadRequest(NSURLRequest(URL: url))
+    }
+    
+    func deleteWebView() {
+        
     }
 
     override func didReceiveMemoryWarning() {
