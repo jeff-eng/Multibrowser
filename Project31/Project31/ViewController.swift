@@ -78,7 +78,35 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
     }
     
     func deleteWebView() {
-        
+        //safely unwrap our webview
+        if let webView = activeWebView {
+            if let index = stackView.arrangedSubviews.indexOf(webView) {
+                // we found the current webview in the stack view; remove it from the stack view
+                stackView.removeArrangedSubview(webView)
+                
+                // remove webview from the view from the view hierarchy - we want to remove deleted web views entirely
+                webView.removeFromSuperview()
+                
+                // reset the UI if there are no more web views
+                if stackView.arrangedSubviews.count == 0 {
+                    // go back to the default UI
+                    setDefaultTitle()
+                } else {
+                    //convert the index value into an integer
+                    var currentIndex = Int(index)
+                    
+                    //if the current index was the last web view in the stack, go back one
+                    if currentIndex == stackView.arrangedSubviews.count {
+                        currentIndex = stackView.arrangedSubviews.count - 1
+                    }
+                    
+                    // find the web view at the new index and select it
+                    if let newSelectedWebView = stackView.arrangedSubviews[currentIndex] as? UIWebView {
+                        selectWebView(newSelectedWebView)
+                    }
+                }
+            }
+        }
     }
 
     func webViewTapped(recognizer: UITapGestureRecognizer) {
@@ -90,8 +118,6 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
