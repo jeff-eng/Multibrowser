@@ -136,6 +136,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
         addressBar.text = webView.request?.URL?.absoluteString ?? ""
     }
     
+    // updates the title property when the web view changes
     func webViewDidFinishLoad(webView: UIWebView) {
         if webView == activeWebView {
             updateUI(for: webView)
