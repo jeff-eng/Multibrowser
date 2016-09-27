@@ -72,6 +72,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
             }
         }
         
+        // resignFirstResponder hides the keyboard
         textField.resignFirstResponder()
         return true
     }
