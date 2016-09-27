@@ -288,6 +288,7 @@
 				95522CE11D97522D0046E1B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

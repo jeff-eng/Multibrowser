@@ -63,6 +63,9 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
         activeWebView = webView
         // update the border width to 3 pts
         webView.layer.borderWidth = 3
+        
+        // updates the title to the web page's title
+        updateUI(for: webView)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -117,6 +120,27 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    // use horizontal stacking if regular class, otherwise uses vertical if compact
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        if traitCollection.horizontalSizeClass == .Compact {
+            stackView.axis = .Vertical
+        } else {
+            stackView.axis = .Horizontal
+        }
+    }
+    
+    func updateUI(for webView: UIWebView) {
+        title = webView.stringByEvaluatingJavaScriptFromString("document.title")
+        addressBar.text = webView.request?.URL?.absoluteString ?? ""
+    }
+    
+    // updates the title property when the web view changes
+    func webViewDidFinishLoad(webView: UIWebView) {
+        if webView == activeWebView {
+            updateUI(for: webView)
+        }
     }
     
     override func didReceiveMemoryWarning() {
