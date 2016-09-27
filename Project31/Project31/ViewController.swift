@@ -136,6 +136,12 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
         addressBar.text = webView.request?.URL?.absoluteString ?? ""
     }
     
+    func webViewDidFinishLoad(webView: UIWebView) {
+        if webView == activeWebView {
+            updateUI(for: webView)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
