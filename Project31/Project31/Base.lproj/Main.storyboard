@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rcI-qX-7s2">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project31" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vNu-41-3T3">
+                                <rect key="frame" x="5" y="72" width="590" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jVW-J4-jc6"/>
+                                </connections>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DVK-65-IFv">
+                                <rect key="frame" x="0.0" y="104" width="600" height="496"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vNu-41-3T3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="Up3-gC-sC9"/>
+                            <constraint firstItem="DVK-65-IFv" firstAttribute="top" secondItem="vNu-41-3T3" secondAttribute="bottom" constant="5" id="WCr-Ij-y1l"/>
+                            <constraint firstItem="DVK-65-IFv" firstAttribute="top" secondItem="vNu-41-3T3" secondAttribute="bottom" constant="5" id="XCf-4f-jm8"/>
+                            <constraint firstItem="vNu-41-3T3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="Zbe-S4-pcb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DVK-65-IFv" secondAttribute="bottom" id="bbI-L6-ufN"/>
+                            <constraint firstAttribute="trailing" secondItem="vNu-41-3T3" secondAttribute="trailing" constant="5" id="c0A-t5-Zl4"/>
+                            <constraint firstAttribute="trailing" secondItem="DVK-65-IFv" secondAttribute="trailing" id="e8U-4a-d4i"/>
+                            <constraint firstItem="DVK-65-IFv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rrw-jl-Stj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ggr-Vo-r0k"/>
+                    <connections>
+                        <outlet property="addressBar" destination="vNu-41-3T3" id="1Ln-j3-ABm"/>
+                        <outlet property="stackView" destination="DVK-65-IFv" id="fU8-ic-X3p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088" y="585"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="231-GG-850">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rcI-qX-7s2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gWp-AX-uJX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="UqM-TX-O92"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5x3-OU-uLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="585"/>
+        </scene>
+    </scenes>
+</document>
